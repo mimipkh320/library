@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>꿈크리작은도서관 도서검색</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📚 꿈크리작은도서관 도서검색</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="도서명, 저자 또는 키워드를 입력하세요...">
+            <button onclick="searchBooks()">검색</button>
+        </div>
+        <div id="resultCount" class="result-count"></div>
+        <div id="bookList" class="book-list">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
