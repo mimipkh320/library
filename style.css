@@ -1,137 +1,111 @@
-/* 기본 폰트 및 배경 설정 */
-body { 
-    font-family: 'Nanum Gothic', sans-serif; 
-    background-color: #f0f2f5; 
-    margin: 0; 
-    padding: 20px; 
-    line-height: 1.6;
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: #f1f8f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
 }
 
-/* 중앙 정렬 컨테이너 */
-.container { 
-    max-width: 800px; 
-    margin: 40px auto; 
-    background: #ffffff; 
-    padding: 30px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* 제목 디자인 */
-h1 { 
-    text-align: center; 
-    color: #2c3e50; 
+header h1 {
+    text-align: center;
+    color: #2d5a27;
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.search-area {
+    background: #f9fbf9;
+    padding: 20px;
+    border-radius: 10px;
     margin-bottom: 30px;
-    font-size: 24px;
+    border: 1px solid #e0eadd;
 }
 
-/* 검색창 영역 (반응형 대응) */
 .search-box {
     display: flex;
-    gap: 8px;
-    margin-bottom: 25px;
+    gap: 10px;
 }
 
-/* 분류 선택창 */
 #searchType {
-    padding: 12px;
-    border: 1px solid #dcdfe6;
-    border-radius: 8px;
-    background-color: #fff;
-    font-size: 15px;
-    color: #606266;
-    outline: none;
-    transition: border-color 0.2s;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
 }
 
-/* 입력창 */
 input {
     flex: 1;
     padding: 12px;
-    border: 1px solid #dcdfe6;
-    border-radius: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     font-size: 16px;
     outline: none;
-    transition: border-color 0.2s;
 }
 
-input:focus, #searchType:focus {
-    border-color: #27ae60;
-}
-
-/* 검색 버튼 */
-button { 
-    padding: 12px 25px; 
-    background-color: #27ae60; 
-    color: white; 
-    border: none; 
-    border-radius: 8px; 
-    font-size: 16px;
+button {
+    padding: 10px 30px;
+    background-color: #2d5a27;
+    color: white;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
-    cursor: pointer; 
-    transition: background 0.2s;
+    cursor: pointer;
 }
 
-button:hover { 
-    background-color: #219150; 
+button:hover {
+    background-color: #1e3d1a;
 }
 
-/* 검색 결과 개수 표시 */
-.result-count { 
-    margin-bottom: 15px; 
-    font-size: 14px; 
-    color: #909399; 
-    padding-left: 5px;
+.result-count {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
 }
 
-/* 개별 도서 아이템 */
-.book-item { 
-    padding: 20px; 
-    border-bottom: 1px solid #f2f2f2; 
-    transition: background 0.2s;
+.book-item {
+    padding: 20px 10px;
+    border-bottom: 1px dashed #d0d0d0;
 }
 
-.book-item:hover {
-    background-color: #fafafa;
+.book-item:last-child {
+    border-bottom: none;
 }
 
-.book-item:last-child { 
-    border-bottom: none; 
+.book-title {
+    font-size: 19px;
+    font-weight: bold;
+    color: #222;
 }
 
-/* 도서 제목 */
-.book-title { 
-    font-weight: bold; 
-    font-size: 18px; 
-    color: #1a1a1a; 
-    margin-bottom: 5px;
+.book-info {
+    font-size: 15px;
+    color: #666;
 }
 
-/* 저자 및 출판사 정보 */
-.book-info { 
-    font-size: 14px; 
-    color: #5e6d82; 
+.book-location {
+    margin-top: 8px;
 }
 
-/* 도서 위치 라벨 */
-.book-location { 
-    display: inline-block; 
-    background: #e8f5e9; 
-    color: #2e7d32; 
-    padding: 4px 10px; 
-    border-radius: 6px; 
-    font-size: 13px; 
-    margin-top: 10px; 
-    font-weight: 500;
+.loc-tag {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid #c8e6c9;
 }
 
-/* 모바일 화면을 위한 설정 (화면이 작아지면 세로로 배치) */
 @media (max-width: 600px) {
-    .search-box {
-        flex-direction: column;
-    }
-    
-    #searchType, input, button {
-        width: 100%;
-    }
+    .search-box { flex-direction: column; }
 }
