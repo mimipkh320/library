@@ -10,12 +10,15 @@
     <div class="container">
         <h1>📚 꿈크리작은도서관 도서검색</h1>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="도서명, 저자 또는 키워드를 입력하세요...">
-            <button onclick="searchBooks()">검색</button>
-        </div>
-        <div id="resultCount" class="result-count"></div>
-        <div id="bookList" class="book-list">
-            </div>
+    <select id="searchType">
+        <option value="all">전체</option>
+        <option value="title">서명</option>
+        <option value="outhor">저자</option>
+        <option value="publisher">출판사</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="검색어를 입력하세요...">
+    <button onclick="searchBooks()">검색</button>
+</div>
     </div>
 
     <script src="script.js"></script>
