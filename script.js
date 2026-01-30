@@ -1,22 +1,26 @@
 let books = [];
 
-// 데이터 불러오기
+// 1. 데이터 불러오기
 fetch('books.json')
     .then(response => response.json())
     .then(data => {
         books = data;
         displayBooks(books);
     })
-    .catch(error => console.error('데이터 오류:', error));
+    .catch(error => {
+        console.error('데이터 로드 실패:', error);
+        document.getElementById('bookList').innerHTML = "데이터를 불러오는 데 실패했습니다.";
+    });
 
-// 검색 함수
+// 2. 검색 함수
 function searchBooks() {
     const query = document.getElementById('searchInput').value.toLowerCase().trim();
-    const searchType = document.getElementById('searchType').value; // 선택된 카테고리
+    const searchType = document.getElementById('searchType').value;
     
     const filteredBooks = books.filter(book => {
+        // 데이터 필드 추출 (데이터에 적힌 그대로 outhor 사용)
         const title = book.title ? String(book.title).toLowerCase() : "";
-        const author = book.outhor ? String(book.outhor).toLowerCase() : ""; // 데이터 오타인 'outhor' 유지
+        const author = book.outhor ? String(book.outhor).toLowerCase() : "";
         const publisher = book.publisher ? String(book.publisher).toLowerCase() : "";
 
         if (searchType === "title") {
@@ -26,7 +30,7 @@ function searchBooks() {
         } else if (searchType === "publisher") {
             return publisher.includes(query);
         } else {
-            // '전체' 검색일 경우
+            // 전체 검색
             return title.includes(query) || author.includes(query) || publisher.includes(query);
         }
     });
@@ -34,12 +38,23 @@ function searchBooks() {
     displayBooks(filteredBooks);
 }
 
-// 엔터키 지원
-document.getElementById('searchInput').addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') searchBooks();
+// 3. 이벤트 리스너 (버튼 클릭 및 엔터키)
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+
+    if(searchBtn) {
+        searchBtn.addEventListener('click', searchBooks);
+    }
+
+    if(searchInput) {
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchBooks();
+        });
+    }
 });
 
-// 화면 출력 함수 (이전과 동일)
+// 4. 화면 출력
 function displayBooks(results) {
     const listElement = document.getElementById('bookList');
     const countElement = document.getElementById('resultCount');
@@ -48,7 +63,7 @@ function displayBooks(results) {
     listElement.innerHTML = '';
 
     if (results.length === 0) {
-        listElement.innerHTML = '<div class="book-item" style="text-align:center; color:#999;">검색 결과가 없습니다.</div>';
+        listElement.innerHTML = '<div class="book-item" style="text-align:center;">검색 결과가 없습니다.</div>';
         return;
     }
 
