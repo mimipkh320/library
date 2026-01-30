@@ -20,7 +20,7 @@ function searchBooks() {
     const filteredBooks = books.filter(book => {
         // 데이터 필드 추출 (데이터에 적힌 그대로 outhor 사용)
         const title = book.title ? String(book.title).toLowerCase() : "";
-        const author = book.outhor ? String(book.outhor).toLowerCase() : "";
+        const author = book.author ? String(book.author).toLowerCase() : "";
         const publisher = book.publisher ? String(book.publisher).toLowerCase() : "";
 
         if (searchType === "title") {
@@ -72,7 +72,7 @@ function displayBooks(results) {
         div.className = 'book-item';
         div.innerHTML = `
             <div class="book-title">${book.title || '제목 없음'}</div>
-            <div class="book-info">${book.outhor || '저자 미상'} | ${book.publisher || '출판사 없음'}</div>
+            <div class="book-info">${book.author || '저자 미상'} | ${book.publisher || '출판사 없음'}</div>
             <div class="book-location">위치: ${book.location || '정보 없음'}</div>
         `;
         listElement.appendChild(div);
